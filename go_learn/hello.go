@@ -1,4 +1,4 @@
-package golearn
+package main
 
 import "fmt"
 
