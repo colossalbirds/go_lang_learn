@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func Hello() {
 	fmt.Println("Hello, World!")
+}
+
+func calculateSum(a int, b int) int {
+
+	return a + b
 }
