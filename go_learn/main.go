@@ -37,11 +37,16 @@ func main() {
 	// fmt.Println(SuccessCode.GetMsg())
 	// var i int
 	// fmt.Println(int(SuccessCode) == i)
-	var animal Animal
+	// var animal Animal
 
-	animal = Chicken{"ik"}
+	// 	animal = Chicken{"ik"}
 
-	animal.sing()
-	animal.jump()
-	animal.rap()
+	// 	animal.sing()
+	// 	animal.jump()
+	// 	animal.rap()
+	wait.Add(2)
+	go add()
+	go reduce()
+	wait.Wait()
+	fmt.Println(num)
 }

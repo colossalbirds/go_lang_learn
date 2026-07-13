@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sync"
+)
 
 func list_my() {
 
@@ -60,6 +63,8 @@ func judge() {
 		return
 	}
 	fmt.Println("中年")
+	// aa := age.(int) // 断言
+	// fmt.Println("断言后的值：", aa)
 
 }
 func judge2() {
@@ -97,4 +102,26 @@ func functions(a string, b string) (res string) {
 		res += a + b
 	}
 	return
+}
+
+var num int
+var wait sync.WaitGroup
+var lock sync.Mutex
+
+func add() {
+	// 谁先抢到了这把锁，谁就把它锁上，一旦锁上，其他的线程就只能等着
+	lock.Lock()
+	for i := 0; i < 1000000; i++ {
+		num++
+	}
+	lock.Unlock()
+	wait.Done()
+}
+func reduce() {
+	lock.Lock()
+	for i := 0; i < 1000000; i++ {
+		num--
+	}
+	lock.Unlock()
+	wait.Done()
 }
